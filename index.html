@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kho Ứng Dụng</title>
 
+<style>
+body{
+    background:#0f172a;
+    color:white;
+    font-family:sans-serif;
+    padding:20px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.app-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#1e293b;
+    border-radius:15px;
+    padding:15px;
+}
+
+.card img{
+    width:80px;
+    height:80px;
+    border-radius:20px;
+}
+
+.download{
+    display:block;
+    text-align:center;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    padding:10px;
+    border-radius:10px;
+    margin-top:10px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📱 Kho Ứng Dụng</h1>
+    <p>Tải và cài đặt ứng dụng</p>
+</div>
+
+<div class="app-grid">
+
+    <div class="card">
+        <img src="icon1.png">
+        <h3>VPN Siêu Cấp</h3>
+        <p>Phiên bản 1.0.0</p>
+
+        <a class="download"
+           href="app/VPNSieuCap.apk">
+           Tải APK
+        </a>
+    </div>
+
+    <div class="card">
+        <img src="icon2.png">
+        <h3>Tool Manager</h3>
+        <p>Phiên bản 2.3.1</p>
+
+        <a class="download"
+           href="app/ToolManager.exe">
+           Tải EXE
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
