@@ -2,84 +2,268 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kho Ứng Dụng</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
 body{
-    background:#0f172a;
+    background:#0b1220;
     color:white;
-    font-family:sans-serif;
-    padding:20px;
 }
 
-.header{
+/* Header */
+header{
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(11,18,32,.8);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#22c55e;
+}
+
+.search{
+    width:350px;
+}
+
+.search input{
+    width:100%;
+    padding:12px 16px;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:white;
+}
+
+/* Hero */
+.hero{
+    padding:80px 8%;
     text-align:center;
-    margin-bottom:30px;
 }
 
-.app-grid{
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#94a3b8;
+    font-size:18px;
+    max-width:700px;
+    margin:auto;
+}
+
+.hero-btn{
+    margin-top:30px;
+    display:inline-block;
+    padding:15px 35px;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    border-radius:15px;
+    font-weight:600;
+}
+
+/* Apps */
+.section{
+    padding:30px 8%;
+}
+
+.section-title{
+    font-size:28px;
+    margin-bottom:25px;
+}
+
+.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:25px;
 }
 
 .card{
-    background:#1e293b;
-    border-radius:15px;
-    padding:15px;
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:22px;
+    padding:20px;
+    transition:.3s;
 }
 
-.card img{
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#22c55e;
+}
+
+.top{
+    display:flex;
+    gap:15px;
+}
+
+.icon{
     width:80px;
     height:80px;
     border-radius:20px;
+    object-fit:cover;
+}
+
+.info h3{
+    margin-bottom:6px;
+}
+
+.version{
+    color:#22c55e;
+    font-size:14px;
+}
+
+.desc{
+    margin-top:15px;
+    color:#94a3b8;
+    line-height:1.6;
+}
+
+.stats{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    color:#94a3b8;
+    font-size:14px;
 }
 
 .download{
     display:block;
     text-align:center;
+    margin-top:18px;
+    padding:12px;
+    border-radius:12px;
     background:#22c55e;
-    color:white;
     text-decoration:none;
-    padding:10px;
-    border-radius:10px;
-    margin-top:10px;
+    color:white;
+    font-weight:600;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:40px;
+    color:#64748b;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:38px;
+    }
+
+    .search{
+        display:none;
+    }
 }
 </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>📱 Kho Ứng Dụng</h1>
-    <p>Tải và cài đặt ứng dụng</p>
-</div>
+<header>
+    <div class="logo">APP<span>STORE</span></div>
 
-<div class="app-grid">
-
-    <div class="card">
-        <img src="icon1.png">
-        <h3>VPN Siêu Cấp</h3>
-        <p>Phiên bản 1.0.0</p>
-
-        <a class="download"
-           href="app/VPNSieuCap.apk">
-           Tải APK
-        </a>
+    <div class="search">
+        <input type="text" placeholder="Tìm kiếm ứng dụng...">
     </div>
+</header>
 
-    <div class="card">
-        <img src="icon2.png">
-        <h3>Tool Manager</h3>
-        <p>Phiên bản 2.3.1</p>
+<section class="hero">
+    <h1>Tải ứng dụng an toàn</h1>
+    <p>
+        Kho ứng dụng riêng của bạn. Chia sẻ APK, EXE,
+        ZIP và các bản phát hành trực tiếp từ GitHub.
+    </p>
 
-        <a class="download"
-           href="app/ToolManager.exe">
-           Tải EXE
-        </a>
+    <a href="#apps" class="hero-btn">
+        Khám phá ứng dụng
+    </a>
+</section>
+
+<section class="section" id="apps">
+
+    <h2 class="section-title">Ứng dụng mới nhất</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="top">
+                <img class="icon"
+                src="https://via.placeholder.com/100">
+
+                <div class="info">
+                    <h3>VPN Siêu Cấp</h3>
+                    <div class="version">v1.0.0</div>
+                </div>
+            </div>
+
+            <div class="desc">
+                VPN tốc độ cao, kết nối nhanh và ổn định.
+            </div>
+
+            <div class="stats">
+                <span>⭐ 4.9</span>
+                <span>📦 25 MB</span>
+            </div>
+
+            <a class="download"
+               href="app/vpn.apk">
+               Tải xuống
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="top">
+                <img class="icon"
+                src="https://via.placeholder.com/100">
+
+                <div class="info">
+                    <h3>Tool Manager</h3>
+                    <div class="version">v2.1.4</div>
+                </div>
+            </div>
+
+            <div class="desc">
+                Quản lý công cụ và cập nhật tự động.
+            </div>
+
+            <div class="stats">
+                <span>⭐ 4.8</span>
+                <span>📦 48 MB</span>
+            </div>
+
+            <a class="download"
+               href="app/tool.exe">
+               Tải xuống
+            </a>
+        </div>
+
     </div>
+</section>
 
-</div>
+<footer>
+    © 2026 App Store • Powered by GitHub Pages
+</footer>
 
 </body>
 </html>
