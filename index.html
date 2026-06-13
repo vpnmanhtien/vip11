@@ -124,8 +124,30 @@ document.getElementById('detail').innerHTML=`
 <div><b>${app.os}</b><br>Nền tảng</div>
 </div>
 
+<h3 class="font-bold text-xl mt-8 mb-3">Ảnh chụp màn hình</h3>
+
+<div class="flex gap-3 overflow-auto">
+<img src="https://picsum.photos/300/600?a=${id}" class="rounded-2xl h-56">
+<img src="https://picsum.photos/300/600?b=${id}" class="rounded-2xl h-56">
+<img src="https://picsum.photos/300/600?c=${id}" class="rounded-2xl h-56">
 </div>
 
+<p class="mt-6 text-gray-600">
+Ứng dụng demo. Khi kết nối API của bạn, dữ liệu thật sẽ hiển thị tại đây.
+</p>
+
+<div class="flex gap-3 mt-6">
+<button class="flex-1 bg-green-600 text-white py-3 rounded-2xl font-bold">
+CÀI ĐẶT NGAY
+</button>
+
+<button onclick="closeModal()"
+class="px-6 bg-gray-200 rounded-2xl">
+Đóng
+</button>
+</div>
+
+</div>`;
 
 document.getElementById('modal').classList.remove('hidden');
 }
