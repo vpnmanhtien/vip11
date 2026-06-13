@@ -41,33 +41,34 @@ class="border rounded-xl px-4 py-2 w-72">
 </div>
 
 <script>
-const apps=[
-{
-id:1,name:"TikTok",os:"android",version:"44.7.3",
-size:"213 MB",downloads:"50549",
-logo:"https://picsum.photos/200?1",
-banner:"https://picsum.photos/1000/350?1"
-},
-{
-id:2,name:"Messenger",os:"android",version:"1.0",
-size:"98 MB",downloads:"12345",
-logo:"https://picsum.photos/200?2",
-banner:"https://picsum.photos/1000/350?2"
-},
-{
-id:3,name:"Facebook",os:"android",version:"1.0",
-size:"120 MB",downloads:"6544",
-logo:"https://picsum.photos/200?3",
-banner:"https://picsum.photos/1000/350?3"
-},
-{
-id:4,name:"APK Pure",os:"android",version:"1.0",
-size:"86 MB",downloads:"4680",
-logo:"https://picsum.photos/200?4",
-banner:"https://picsum.photos/1000/350?4"
-}
-];
+let apps=[];
 
+async function loadApps(){
+
+    try{
+
+        const response = await fetch('./app.json');
+
+        if(!response.ok){
+            throw new Error("Không tìm thấy app.json");
+        }
+
+        apps = await response.json();
+
+        render();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Không tải được app.json");
+
+    }
+
+}
+
+loadApps();
+  
 let current='all';
 
 function render(){
