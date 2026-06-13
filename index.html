@@ -41,211 +41,124 @@ class="border rounded-xl px-4 py-2 w-72">
 </div>
 
 <script>
-let apps=[];
-
-async function loadApps(){
-
-    try{
-
-        const response = await fetch('./app.json');
-
-        apps = await response.json();
-
-        render();
-
-    }catch(error){
-
-        console.error(error);
-
-        alert("Không tải được app.json");
-
-    }
-
+const apps=[
+{
+id:1,name:"TikTok",os:"android",version:"44.7.3",
+size:"213 MB",downloads:"50549",
+logo:"https://picsum.photos/200?1",
+banner:"https://picsum.photos/1000/350?1"
+},
+{
+id:2,name:"Messenger",os:"android",version:"1.0",
+size:"98 MB",downloads:"12345",
+logo:"https://picsum.photos/200?2",
+banner:"https://picsum.photos/1000/350?2"
+},
+{
+id:3,name:"Facebook",os:"android",version:"1.0",
+size:"120 MB",downloads:"6544",
+logo:"https://picsum.photos/200?3",
+banner:"https://picsum.photos/1000/350?3"
+},
+{
+id:4,name:"APK Pure",os:"android",version:"1.0",
+size:"86 MB",downloads:"4680",
+logo:"https://picsum.photos/200?4",
+banner:"https://picsum.photos/1000/350?4"
 }
+];
 
-loadApps();
-```javascript
 let current='all';
 
 function render(){
-
 const s=document.getElementById('search').value.toLowerCase();
 const box=document.getElementById('apps');
 
 box.innerHTML='';
 
-apps
-.filter(a =>
-(current==='all' || a.os===current) &&
-a.name.toLowerCase().includes(s)
-)
+apps.filter(a=>(current==='all'||a.os===current)&&a.name.toLowerCase().includes(s))
 .forEach(app=>{
-
-box.innerHTML += `
-
+box.innerHTML+=`
 <div class="card bg-white rounded-3xl p-6 shadow">
+<img src="${app.logo}" class="w-28 h-28 mx-auto rounded-3xl shadow">
+<h2 class="text-center font-bold text-2xl mt-4">${app.name}</h2>
+<div class="text-center text-gray-500 mt-2">${app.os} · ${app.version}</div>
 
-<img
-src="${app.logo}"
-class="w-28 h-28 mx-auto rounded-3xl shadow">
-
-<h2 class="text-center font-bold text-2xl mt-4">
-${app.name}
-</h2>
-
-<div class="text-center text-gray-500 mt-2">
-${app.os} · ${app.version}
-</div>
-
-<a
-href="${app.downloadUrl}"
-target="_blank"
-onclick="event.stopPropagation()"
-class="block w-full mt-6 bg-green-600 text-white py-3 rounded-2xl font-bold text-center">
-
+<button onclick="event.stopPropagation();openApp(${app.id})"
+class="w-full mt-6 bg-green-600 text-white py-3 rounded-2xl font-bold">
 Tải Xuống
-
-</a>
+</button>
 
 <div class="flex justify-between mt-5 text-gray-500">
-
 <span>${app.size}</span>
-
 <span>⬇ ${app.downloads}</span>
-
 </div>
-
-</div>
-
-`;
-
+</div>`;
 });
-
 }
 
 function filterApps(os){
-
 current=os;
-
 render();
-
 }
 
 function openApp(id){
+const app=apps.find(x=>x.id===id);
 
-const app = apps.find(x => x.id == id);
-
-document.getElementById('detail').innerHTML = `
-
-<img
-src="${app.banner || app.logo}"
-class="w-full h-64 object-cover">
+document.getElementById('detail').innerHTML=`
+<img src="${app.banner}" class="w-full h-64 object-cover">
 
 <div class="p-6">
 
 <div class="flex gap-4 items-center">
-
-<img
-src="${app.logo}"
-class="w-24 h-24 rounded-3xl">
-
+<img src="${app.logo}" class="w-24 h-24 rounded-3xl">
 <div>
-
-<h2 class="text-3xl font-black">
-${app.name}
-</h2>
-
-<p class="text-green-600">
-Version ${app.version}
-</p>
-
+<h2 class="text-3xl font-black">${app.name}</h2>
+<p class="text-green-600">Version ${app.version}</p>
 </div>
-
 </div>
 
 <div class="grid grid-cols-3 text-center mt-6">
-
-<div>
-<b>${app.size}</b>
-<br>
-Dung lượng
+<div><b>${app.size}</b><br>Dung lượng</div>
+<div><b>${app.downloads}</b><br>Lượt tải</div>
+<div><b>${app.os}</b><br>Nền tảng</div>
 </div>
 
-<div>
-<b>${app.downloads}</b>
-<br>
-Lượt tải
-</div>
-
-<div>
-<b>${app.os}</b>
-<br>
-Nền tảng
-</div>
-
-</div>
-
-<h3 class="font-bold text-xl mt-8 mb-3">
-Ảnh chụp màn hình
-</h3>
+<h3 class="font-bold text-xl mt-8 mb-3">Ảnh chụp màn hình</h3>
 
 <div class="flex gap-3 overflow-auto">
-
 <img src="https://picsum.photos/300/600?a=${id}" class="rounded-2xl h-56">
-
 <img src="https://picsum.photos/300/600?b=${id}" class="rounded-2xl h-56">
-
 <img src="https://picsum.photos/300/600?c=${id}" class="rounded-2xl h-56">
-
 </div>
 
 <p class="mt-6 text-gray-600">
-
-Phiên bản ${app.version}
-có dung lượng ${app.size}.
-
+Ứng dụng demo. Khi kết nối API của bạn, dữ liệu thật sẽ hiển thị tại đây.
 </p>
 
 <div class="flex gap-3 mt-6">
-
-<a
-href="${app.downloadUrl}"
-target="_blank"
-class="flex-1 bg-green-600 text-white py-3 rounded-2xl font-bold text-center">
-
+<button class="flex-1 bg-green-600 text-white py-3 rounded-2xl font-bold">
 CÀI ĐẶT NGAY
-
-</a>
-
-<button
-onclick="closeModal()"
-class="px-6 bg-gray-200 rounded-2xl">
-
-Đóng
-
 </button>
 
+<button onclick="closeModal()"
+class="px-6 bg-gray-200 rounded-2xl">
+Đóng
+</button>
 </div>
 
-</div>
+</div>`;
 
-`;
-
-document
-.getElementById('modal')
-.classList.remove('hidden');
-
+document.getElementById('modal').classList.remove('hidden');
 }
 
 function closeModal(){
-
-document
-.getElementById('modal')
-.classList.add('hidden');
-
+document.getElementById('modal').classList.add('hidden');
 }
 
-document
-.getElementById('search')
-.addEventListener('input', render);
-```
+document.getElementById('search').addEventListener('input',render);
+render();
+</script>
+
+</body>
+</html>
